@@ -1,0 +1,1 @@
+export { extractPdf } from './pdf';

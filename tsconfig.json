@@ -1,0 +1,23 @@
+// The fuck: https://stackoverflow.com/questions/63742790/unable-to-import-esm-ts-module-in-node
+{
+  "extends": "@tsconfig/recommended",
+  "compilerOptions": {
+    "module": "CommonJS", 
+    "moduleResolution": "Node",
+    "target": "ES2020", // ES2020 in earlier versions
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": false,
+    "outDir": "dist",
+    "rootDir": "src",
+  },
+  "exclude": [
+    "node_modules/",
+    "dist/",
+    "tests/"
+  ],
+  "include": [
+    "./src/**/*.ts"
+  ]
+}
