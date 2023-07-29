@@ -42,14 +42,15 @@ function combineChunks(chunks: string[], maxChunkSize: number): string[] {
     return outChunks;
 }
 
+
 export async function chunkParagraphs(
     text: string,
     chunkSize: number = 2000
 ): Promise<{ chunkNumber: number; content: string }[]> {
-    // take document and split it into paragraphs of no more than maxChunkSize characters
+    // Recursively split, then combine chunks to preserve as much context as possible
     const smallChunks = chunkHelper(
         text,
-        ["\n\n", "\n", ". ", " ", ""],
+        ["\n\n", ". ", "\n", " ", ""],
         chunkSize
     );
     const maximalChunks = combineChunks(smallChunks, chunkSize);
