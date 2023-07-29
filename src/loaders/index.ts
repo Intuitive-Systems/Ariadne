@@ -1,1 +1,1 @@
-export { extractPdf } from './pdf';
+export * from './pdf';

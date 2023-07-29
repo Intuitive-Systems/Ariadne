@@ -1,6 +1,6 @@
 # Ariadne: Navigating Information Labyrinths with Ease 📚🔍
 
-> "*Ariadne gave him a ball of thread, and instructed him to unravel it as he penetrated deeper and deeper into the Labyrinth, so that he could find his way out when the Beast was slain.*" - Greek Myth about Ariadne and the Minotaur.
+> "*Ariadne gave him a ball of thread, and instructed him to unravel it as he penetrated deeper and deeper into the Labyrinth, so that he could find his way out when the Beast was slain.*" - Theseus and the Minotaur
 
 Ariadne, named after the Greek mythology heroine who helped Theseus navigate the labyrinth of the Minotaur, is a document search and inference library. It is designed to assist users to navigate through the labyrinthine complexity of dense information. Just as Ariadne's thread guided Theseus, our library helps in understanding and exploring documents and articles that won't fit into a single context window! 🚀
 
@@ -8,6 +8,43 @@ Ariadne, named after the Greek mythology heroine who helped Theseus navigate the
 The primary intent behind Ariadne is to facilitate a simple abstraction for single document search. It is designed to be fast and efficient for single documents of less than 1000 pages. Ariadne can build several types of indices, starting with the document embedding index, a document-aware structure. It allows you to search over chunks or individual pages and filter chunks by page and tags. Ariadne is all about pre-processing, making it clean and optimized for users! 💡
 
 ## Getting Started 🚀
+
+Here's a quick guide on how to get started with Ariadne. Fasten your seatbelts!
+
+## Pre-requisites 📋
+
+Before starting, ensure that you have Node.js installed on your system. Ariadne is built with TypeScript but runs on Node.js.
+
+## Installation 💽
+
+To install Ariadne, use the following command in your terminal:
+
+```bash
+# not published yet
+# yarn install ariadne
+```
+
+## Basic Usage 🛠️
+
+### Indexing a Document
+
+The first step is to index a document using Ariadne. Here is a simple example where we extract pages from a PDF, index it, and run a query on the index:
+
+```javascript
+import { DocumentIndex, extractPdf } from "ariadne";
+const pages = await extractPdf(documentPath);
+const index = await DocumentIndex.fromPages(pages);
+
+const query = "Your Query Here";
+const results = await index.query(query, 3);
+
+console.log(`Search Results: ${JSON.stringify(results, null, 2)}`);
+```
+
+Voila! You have successfully indexed a document and ran a query on it using Ariadne. Now you are ready to explore the labyrinth of information in your documents with Ariadne! 🎉
+
+For more detailed examples, please visit the `examples` folder in the repository. Happy coding! 💻
+
 
 ### Document Loaders 📂
 

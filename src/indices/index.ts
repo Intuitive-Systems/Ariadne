@@ -1,1 +1,1 @@
-export { DocumentIndex } from './DocumentIndex';
+export * from './DocumentIndex';

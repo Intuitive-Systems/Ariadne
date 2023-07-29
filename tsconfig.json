@@ -3,7 +3,7 @@
   "extends": "@tsconfig/recommended",
   "compilerOptions": {
     "module": "CommonJS", 
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "target": "ES2020", // ES2020 in earlier versions
     "esModuleInterop": true,
     "resolveJsonModule": true,
@@ -19,5 +19,6 @@
   ],
   "include": [
     "./src/**/*.ts"
-  ]
+  ],
+  "lib": ["es2022", "dom"]
 }

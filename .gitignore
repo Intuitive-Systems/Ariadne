@@ -12,3 +12,5 @@
 #.pnp.*
 node_modules
 .env
+dist/**/*
+tmp/**/*
