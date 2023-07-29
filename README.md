@@ -2,7 +2,11 @@
 
 > "*Ariadne gave him a ball of thread, and instructed him to unravel it as he penetrated deeper and deeper into the Labyrinth, so that he could find his way out when the Beast was slain.*" - Theseus and the Minotaur
 
-Ariadne, named after the Greek mythology heroine who helped Theseus navigate the labyrinth of the Minotaur, is a document search and inference library. It is designed to assist users to navigate through the labyrinthine complexity of dense information. Just as Ariadne's thread guided Theseus, our library helps in understanding and exploring documents and articles that won't fit into a single context window! 🚀
+<p align="center">
+    <img src="ariadne.png" width="450" >
+</p>
+
+Ariadne, named after the Greek mythology heroine who helped Theseus navigate the labyrinth of the Minotaur, is a document search and inference library. It is designed to assist users to navigate through the labyrinthine complexity of dense information. Just as Ariadne's thread guided Theseus, our library helps in understanding and exploring documents and articles that won't fit into a single context window! 🐂
 
 ## Intent 🎯
 The primary intent behind Ariadne is to facilitate a simple abstraction for single document search. It is designed to be fast and efficient for single documents of less than 1000 pages. Ariadne can build several types of indices, starting with the document embedding index, a document-aware structure. It allows you to search over chunks or individual pages and filter chunks by page and tags. Ariadne is all about pre-processing, making it clean and optimized for users! 💡
@@ -65,12 +69,12 @@ Well, we have a lot planned! We're looking to abstract the document embedding in
 *Coming soon!*
 
 ## To Do List 📝
-[ ] Clean up the tracing implementation.
-[ ] Design and Implement `BaseIndex` class, designed to be subclassed 
-[ ] Implement `TextIndex` which is designed to index arbitrary text
-[ ] Implement `WebsiteIndex` which is designed to crawl and index text from webpages
-[ ] Setup package distribution and publishing
-[ ] Evaluate the potential for open sourcing
+- [ ] Clean up the tracing implementation.
+- [ ] Design and Implement `BaseIndex` class, designed to be subclassed 
+- [ ] Implement `TextIndex` which is designed to index arbitrary text
+- [ ] Implement `WebsiteIndex` which is designed to crawl and index text from webpages
+- [ ] Setup package distribution and publishing
+- [ ] Evaluate the potential for open sourcing
 
 ## Conclusion 🎁
 Ariadne aims to make navigating dense documents as simple as possible. We're in the early stages and excited about the potential this library holds. We hope it will be as helpful to you as Ariadne's thread was to Theseus! 💫
