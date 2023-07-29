@@ -2,6 +2,7 @@ import { existsSync, promises as fs } from 'fs';
 import { promisify } from 'util';
 import { exec } from 'child_process';
 import { Page } from '../indices/DocumentIndex';
+import { v4 as uuidv4 } from 'uuid';
 
 export async function extractPdf(PDFPath: string): Promise<Page[]> {
   if (!existsSync(PDFPath)) {
@@ -43,7 +44,7 @@ export async function extractPdf(PDFPath: string): Promise<Page[]> {
     }
     try {
         const content = await fs.readFile(OutFilePath, 'utf8');
-        pages.push({ page: i, content, tags: [] });
+        pages.push({ id: uuidv4(), pageNumber: i, content, tags: [] });
     } 
     catch (error: any) {
         throw new Error(`Error reading output text file: ${error.message}`);

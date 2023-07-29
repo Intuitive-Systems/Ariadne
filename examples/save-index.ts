@@ -4,9 +4,9 @@ const documentPath =  __dirname + "/documents/theseus-minotaur.pdf";
 
 async function main() {
     const pages = await extractPdf(documentPath);
-    const index = await DocumentIndex.fromPages(pages);
+    const index = await DocumentIndex.fromRecords(pages);
 
-    const indexJson = index.save();
+    const indexJson = index.toJSON();
     fs.writeFileSync(__dirname + "/indices/theseus-minotaur.index.json", JSON.stringify(indexJson, null, 2));
     console.log(`Successfully saved index to ${__dirname + "/indices/theseus-minotaur.index.json"}`);
 }

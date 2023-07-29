@@ -1,4 +1,6 @@
-export async function chunkText(text: string, chunkSize: number = 2000): Promise<{chunkNumber: number, content: string}[]> {
+import { RecordChunk } from "../indices/BaseIndex";
+
+export async function chunkText(recordId: string, text: string, chunkSize: number = 2000): Promise<RecordChunk[]> {
     const chunks = [];
     const words = text.split(' ');
     let chunkNumber = 0;
@@ -6,7 +8,7 @@ export async function chunkText(text: string, chunkSize: number = 2000): Promise
     let i = 0;
     while (i < words.length) {
       if (chunk.length + words[i].length > chunkSize) {
-        chunks.push({ chunkNumber, content: chunk });
+        chunks.push({ recordId, chunkNumber, content: chunk });
         chunkNumber++;
         chunk = '';
       } else {
