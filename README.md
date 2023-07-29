@@ -18,6 +18,7 @@ Here's a quick guide on how to get started with Ariadne. Fasten your seatbelts!
 ## Pre-requisites 📋
 
 Before starting, ensure that you have Node.js installed on your system. Ariadne is built with TypeScript but runs on Node.js.
+Poppler will also need to be installed in order to read PDFs.
 
 ## Installation 💽
 
