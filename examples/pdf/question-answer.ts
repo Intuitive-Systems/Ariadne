@@ -1,10 +1,10 @@
 import { ChatCompletionRequestMessage } from "openai";
-import { DocumentIndex, openaiChatCompletion } from "../src";
+import { DocumentIndex, openaiChatCompletion } from "../../src";
 import fs from "fs";
-const documentPath =  __dirname + "/documents/theseus-minotaur.pdf";
 
 async function main() {
-    const savedIndex = JSON.parse(fs.readFileSync(__dirname + "/indices/theseus-minotaur.index.json").toString());
+    const path = __dirname + "/../indices/theseus-minotaur.index.json";
+    const savedIndex = JSON.parse(fs.readFileSync(path).toString());
     const index = DocumentIndex.fromJSON(savedIndex);
     const query = "Who is Ariadne?";
     const results = await index.query(query, 3);
@@ -18,7 +18,7 @@ async function main() {
     const thoughts: ChatCompletionRequestMessage = {
         role: "assistant",
         content: `Hmm I found these parts of the document that are similar to the user's query.
-        Chunks:\n${results.map(r => `Page ${r.page}, Content: ${r.content}`).join('\n')}`
+        Chunks:\n${results.map(r => `Page ${r.pageNumber}, Content: ${r.content}`).join('\n')}`
     }
     const prompt: ChatCompletionRequestMessage = {
         role: "user",
