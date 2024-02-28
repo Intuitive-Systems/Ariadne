@@ -1,9 +1,10 @@
 import { ChatCompletionRequestMessage } from "openai";
-import { DocumentIndex, openaiChatCompletion } from "../src";
+import { DocumentIndex, openaiChatCompletion } from "../../src";
 import fs from "fs";
 
 async function main() {
-    const savedIndex = JSON.parse(fs.readFileSync(__dirname + "/indices/theseus-minotaur.index.json").toString());
+    const path = __dirname + "/../indices/theseus-minotaur.index.json";
+    const savedIndex = JSON.parse(fs.readFileSync(path).toString());
     const index = DocumentIndex.fromJSON(savedIndex);
     const query = "Who is Ariadne?";
     const results = await index.query(query, 3);

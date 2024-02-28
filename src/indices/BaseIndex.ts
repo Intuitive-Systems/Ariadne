@@ -1,5 +1,8 @@
+import { SelectCategoryLabel } from "../openai";
+
 export interface Record {
     id: string;
+    index?: number;
     content: string;
     textConversion?: string;
     tags: string[];
@@ -7,6 +10,7 @@ export interface Record {
 
 export interface RecordChunk {
     recordId: string;
+    recordIndex?: number;
     chunkNumber: number;
     content: string;
     tags: string[];
@@ -41,12 +45,14 @@ export abstract class BaseIndex<R extends Record> {
         this.conversionFunction = conversionFunction;
     }
 
-    protected abstract createIndex(chunkSize: number): Promise<void>;
+    protected abstract createIndex(chunkSize: number, tags: SelectCategoryLabel): Promise<void>;
 
     // output index as JSON
     public toJSON(): RecordIndex {
         return this.index;
     }
+
+    
 
     public abstract query(query: string, k: number): Promise<RecordChunk[]>;
 }

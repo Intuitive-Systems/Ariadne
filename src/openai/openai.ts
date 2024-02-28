@@ -1,15 +1,11 @@
 import retry from "async-retry"
 import {ChatCompletionRequestMessage, Configuration, CreateCompletionResponse, OpenAIApi} from 'openai';
-import {config} from "../config";
+import { config } from "../config";
 import { inspect } from 'util';
 import { TIKTOKEN_MODEL, numTokens } from "../tokenization/tokenizer";
 import {traceFunction} from "../trace";
 
-const configuration = new Configuration({
-    apiKey: config.openai_api_key
-});
-const openai = new OpenAIApi(configuration);
-
+const openai = config.openai;
 
 /*
     This function is used to generate text using the OpenAI API.

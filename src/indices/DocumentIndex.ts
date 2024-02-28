@@ -1,14 +1,14 @@
 import { BaseIndex, Record, RecordChunk, RecordIndex, ConversionFunction, ChunkingFunction } from './BaseIndex';
 import { openaiEmbedding } from '../openai/openai';
 import similarity from 'compute-cosine-similarity';
-import { chunkText } from '../chunking';
+import { chunkParagraphs, chunkText } from '../chunking';
 
 export interface Page extends Record {
-  pageNumber: number;
+  pageNumber: string;
 }
 
 export interface PageChunk extends RecordChunk {
-  pageNumber: number;
+  pageNumber: string;
 }
 
 export type PageChunkResult = PageChunk & { similarity: number };
@@ -51,13 +51,13 @@ export class DocumentIndex extends BaseIndex<Page> {
     this.index = index;
   }
 
-  public static async fromRecords(records: Page[], chunkSize: number = 1000, chunkingFunction: ChunkingFunction = chunkText, conversionFunction: ConversionFunction = null): Promise<DocumentIndex> {
+  public static async fromRecords(records: Page[], chunkSize: number = 1000, chunkingFunction: ChunkingFunction = chunkParagraphs, conversionFunction: ConversionFunction = null): Promise<DocumentIndex> {
     const instance = new DocumentIndex(records, chunkingFunction, conversionFunction);
     await instance.createIndex(chunkSize);
     return instance;
   }
 
-  public static fromJSON(recordIndex: DocumentIndexI, chunkingFunction: ChunkingFunction = chunkText, conversionFunction: ConversionFunction = null): DocumentIndex {
+  public static fromJSON(recordIndex: DocumentIndexI, chunkingFunction: ChunkingFunction = chunkParagraphs, conversionFunction: ConversionFunction = null): DocumentIndex {
     const instance = new DocumentIndex(recordIndex.records, chunkingFunction, conversionFunction);
     instance.index = recordIndex;
     return instance;
